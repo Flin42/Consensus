@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/src/profile.dart';
 import 'package:frontend_flutter/src/startSession.dart';
 import 'package:frontend_flutter/src/home.dart';
+import 'package:frontend_flutter/src/joinSession.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => Home(),
           '/startSession': (context) => StartSession(),
           '/ProfileScreen': (context) => ProfileScreen(),
+          '/joinSession': (context) => JoinSession(),
         });
   }
 }

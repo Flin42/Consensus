@@ -25,6 +25,16 @@ class _HomeState extends State<Home> {
               child: ElevatedButton(
                 child: Text(
                   "Start Session",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 36,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  primary: Colors.red[600],
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/startSession');
@@ -36,8 +46,22 @@ class _HomeState extends State<Home> {
             Container(
               padding: EdgeInsets.all(12),
               child: ElevatedButton(
-                child: Text("Join Session"),
-                onPressed: () {},
+                child: Text(
+                  "Join Session",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 36,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  primary: Colors.green,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/joinSession');
+                },
               ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 4,
@@ -45,10 +69,20 @@ class _HomeState extends State<Home> {
             Container(
               padding: EdgeInsets.all(12),
               child: ElevatedButton(
-                child: Text("Profile"),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/ProfileScreen');
-                },
+                child: Text(
+                  "Profile",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 36,
+                  ),
+                ),
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  primary: Colors.purple,
+                ),
               ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 4,
