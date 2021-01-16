@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                 },
               ),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 3,
             ),
             Container(
               padding: EdgeInsets.all(12),
@@ -64,31 +64,29 @@ class _HomeState extends State<Home> {
                 },
               ),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 3,
             ),
-            Container(
-              padding: EdgeInsets.all(12),
-              child: ElevatedButton(
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    fontSize: 36,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/ProfileScreen');
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  primary: Colors.purple,
-                ),
-              ),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4,
-            ),
+            // Container(
+            //   padding: EdgeInsets.all(12),
+            //   child: ElevatedButton(
+            //     child: Text(
+            //       "Profile",
+            //       style: TextStyle(
+            //         fontWeight: FontWeight.w900,
+            //         fontSize: 36,
+            //       ),
+            //     ),
+            //     onPressed: () {},
+            //     style: ElevatedButton.styleFrom(
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(16),
+            //       ),
+            //       primary: Colors.purple,
+            //     ),
+            //   ),
+            //   width: MediaQuery.of(context).size.width,
+            //   height: MediaQuery.of(context).size.height / 4,
+            // ),
           ],
         ),
       ),

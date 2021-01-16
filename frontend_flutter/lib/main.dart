@@ -4,6 +4,8 @@ import 'package:frontend_flutter/src/startSession.dart';
 import 'package:frontend_flutter/src/home.dart';
 import 'package:frontend_flutter/src/joinSession.dart';
 import 'package:frontend_flutter/src/swipe.dart';
+import 'package:frontend_flutter/src/hostSession.dart';
+import 'package:frontend_flutter/src/clientSession.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
           '/ProfileScreen': (context) => ProfileScreen(),
           '/joinSession': (context) => JoinSession(),
           '/Swipe': (context) => SwipeScreen(),
+          '/hostSession': (context) => HostSession(),
+          '/clientSession': (context) => ClientSession(),
         });
   }
 }
