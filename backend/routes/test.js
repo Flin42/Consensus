@@ -38,4 +38,26 @@ router.route("/getItemCount").get((req, res) => {
     }); */
 });
 
+router.route("/roomCheck").get((req, res) => {
+  console.log(req.body.room_code);
+
+  models.session
+    .findOne({
+      where: {
+        session_id: req.body.room_code,
+      },
+    })
+    .then((room) => {
+      if (room === null) {
+        console.log("room not found");
+        /* req.io.broadcast("room_not_found"); */
+      } else {
+        // update join room
+        console.log("f");
+        /*   req.io.join(req.body.room_code);
+        req.io.broadcast("room_found"); */
+      }
+    });
+});
+
 module.exports = router;
