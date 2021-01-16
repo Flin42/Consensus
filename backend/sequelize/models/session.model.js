@@ -1,15 +1,16 @@
-const { timeStamp } = require("console");
+const {
+  timeStamp
+} = require("console");
 var Sequelize = require("sequelize-cockroachdb");
 
 module.exports = (sequelize) => {
   return sequelize.define("session", {
-    sessionID: {
+    session_id: {
       type: Sequelize.STRING,
-      primaryKey: true,
+      //primaryKey: true,
       allowNull: false,
-      autoIncrement: true,
     },
-    ownerID: {
+    owner_id: {
       type: Sequelize.INTEGER,
       allowNull: true,
     },

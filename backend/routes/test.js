@@ -1,26 +1,27 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize-cockroachdb");
 const fs = require("fs");
-const { models } = require("../sequelize/sequelize");
-const { Op, and } = require("sequelize-cockroachdb");
+const {
+  models
+} = require("../sequelize/sequelize");
+const {
+  Op,
+  and
+} = require("sequelize-cockroachdb");
 //FOR TESTING CERTAIN (SEQUELIZE) API CALLS DIRECTLY
 const seq = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
+  process.env.DB_PASSWORD, {
     dialect: "postgres",
     host: process.env.DB_URL,
     port: process.env.DB_PORT,
     logging: false,
-    dialectOptions:
-      process.env.DB_SSL_MODE === "ENABLED"
-        ? {
-            ssl: {
-              ca: fs.readFileSync(process.env.DB_CERT_LOCATION).toString(),
-            },
-          }
-        : {},
+    dialectOptions: process.env.DB_SSL_MODE === "ENABLED" ? {
+      ssl: {
+        ca: fs.readFileSync(process.env.DB_CERT_LOCATION).toString(),
+      },
+    } : {},
   }
 );
 router.route("/getItemCount").get((req, res) => {
@@ -37,5 +38,15 @@ router.route("/getItemCount").get((req, res) => {
       );
     }); */
 });
+
+/* router.route("/roomCheck").get((req, res) => {
+  console.log("Testing getting specific item");
+  const room = await models.ssession.findOne({
+    where: {
+      session_id = req.data.room_code
+    }
+  });
+  console.log(room);
+}); */
 
 module.exports = router;
