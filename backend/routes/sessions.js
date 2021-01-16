@@ -41,11 +41,8 @@ router.route("/add").post((req, res) => {
   );
 
   /* RETURN SESSION ID AND LISTINGS ARRAY */
-
-  /* const items = grabItems();
-  res.send({ items, sessionID }); */
   grabItems(res, sessionID);
-  //INSERT INTO sessions(sessionID, ownerID) VALUES('abc', 1);
+
   console.log(userID);
 });
 
@@ -55,6 +52,21 @@ async function grabItems(res, sessionID) {
     /* CHECK IF ITEM EXISTS */
     for (var i = 0; i < SENDABLE_ARRAY_LENGTH; i++) {
       //var i = Math.floor(Math.random() * ARRAY_LENGTH);
+      seq.query(
+        "insert into sessionitems(sessionID, item, count) values('" +
+          sessionID +
+          "', '" +
+          r[i].dataValues.name +
+          "', 0);"
+      );
+      console.log(
+        "insert into sessionitems(sessionID, item, count) values('" +
+          sessionID +
+          "', '" +
+          r[i].dataValues.name +
+          "', 0);"
+      );
+      //insert into sessionitems(sessionID, name, count) values('test','movie',0);
       arr.push(r[i].dataValues.name);
     }
     res.send({ items: arr, session_ID: sessionID });

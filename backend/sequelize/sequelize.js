@@ -26,7 +26,8 @@ const sequelize = new Sequelize(
 
 const user = require("./models/user.model")(sequelize);
 const item = require("./models/item.model")(sequelize);
+const sessionitem = require("./models/sessionitem.model")(sequelize);
+const session = require("./models/session.model")(sequelize);
 
 sequelize.authenticate();
-console.info("Sequealize works");
-module.exports = { sequelize, models: { user, item } };
+module.exports = { sequelize, models: { user, item, sessionitem, session } };
