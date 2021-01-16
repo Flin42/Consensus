@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 class StartSession extends StatefulWidget {
   StartSession({Key key, this.title}) : super(key: key);
@@ -50,7 +49,10 @@ class _StartSessionState extends State<StartSession> {
                       ),
                       primary: Colors.red[600],
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/hostSession",
+                          arguments: "Movies");
+                    },
                   ),
                   width: MediaQuery.of(context).size.width / 2,
                   height: MediaQuery.of(context).size.height * 2 / 5,
@@ -71,14 +73,16 @@ class _StartSessionState extends State<StartSession> {
                       ),
                       primary: Colors.green,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/hostSession",
+                          arguments: "Restaurants");
+                    },
                   ),
                   width: MediaQuery.of(context).size.width / 2,
                   height: MediaQuery.of(context).size.height * 2 / 5,
                 ),
               ],
             ),
-            // QrImage(data: "1234", size: 100)
             Container(
               padding: EdgeInsets.all(12),
               child: ElevatedButton(

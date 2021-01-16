@@ -39,6 +39,8 @@ class _JoinSessionState extends State<JoinSession> {
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'Please enter code';
+                      } else if (int.tryParse(value) == null) {
+                        return 'Must only be numbers';
                       }
                       return null;
                     },
@@ -52,7 +54,12 @@ class _JoinSessionState extends State<JoinSession> {
                       child: Text("Enter",
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.w700)),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          Navigator.pushNamed(context, '/clientSession',
+                              arguments: code);
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         shape: StadiumBorder(),
                       )),
