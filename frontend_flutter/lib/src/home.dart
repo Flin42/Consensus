@@ -46,7 +46,9 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.all(12),
               child: ElevatedButton(
                 child: Text("Profile"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/ProfileScreen');
+                },
               ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 4,
