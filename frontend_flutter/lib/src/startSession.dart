@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class StartSession extends StatefulWidget {
   StartSession({Key key, this.title}) : super(key: key);
@@ -22,7 +23,10 @@ class _StartSessionState extends State<StartSession> {
           children: <Widget>[
             Text(
               "Start a Session",
-              style: TextStyle(fontSize: 40),
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 40,
+              ),
             ),
             SizedBox(
               height: 20,
@@ -35,7 +39,16 @@ class _StartSessionState extends State<StartSession> {
                   child: ElevatedButton(
                     child: Text(
                       "Movies",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      primary: Colors.red[600],
                     ),
                     onPressed: () {},
                   ),
@@ -47,7 +60,16 @@ class _StartSessionState extends State<StartSession> {
                   child: ElevatedButton(
                     child: Text(
                       "Restaurants",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      primary: Colors.green,
                     ),
                     onPressed: () {},
                   ),
@@ -56,12 +78,22 @@ class _StartSessionState extends State<StartSession> {
                 ),
               ],
             ),
+            // QrImage(data: "1234", size: 100)
             Container(
               padding: EdgeInsets.all(12),
               child: ElevatedButton(
                 child: Text(
                   "Custom",
-                  style: TextStyle(fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  primary: Colors.purple,
                 ),
                 onPressed: () {},
               ),
