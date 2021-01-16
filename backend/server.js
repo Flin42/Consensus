@@ -28,13 +28,16 @@ const sequelize = new Sequelize(
 );
 
 //const { models } = require("./sequelize/sequelize");
-
 app.use(cors());
 app.use(express.json());
 sequelize.authenticate();
 console.info(
   "INFO: Connection to the database has been established successfully."
 );
+
+app.use("/swipe", require("./routes/swipe"));
+app.use("/sessions", require("./routes/sessions"));
+app.use("/user", require("./routes/user"));
 
 app.listen(port, () => {
   console.log("Server is running on port: " + port);

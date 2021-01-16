@@ -1,8 +1,9 @@
+const { timeStamp } = require("console");
 var Sequelize = require("sequelize-cockroachdb");
 
 module.exports = (sequelize) => {
-  return sequelize.define("users", {
-    id: {
+  return sequelize.define("user", {
+    user_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       allowNull: false,
@@ -13,11 +14,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     email: {
-      type: Sequelize.TEXT,
+      type: Sequelize.STRING,
       allowNull: true,
     },
     password: {
-      type: sequelize.TEXT,
+      type: Sequelize.STRING,
       allowNull: false,
     },
   });

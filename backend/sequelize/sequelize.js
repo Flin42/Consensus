@@ -7,6 +7,9 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     dialect: "postgres",
+    define: {
+      timestamps: false,
+    },
     host: process.env.DB_URL,
     port: process.env.DB_PORT,
     logging: false,
@@ -20,7 +23,10 @@ const sequelize = new Sequelize(
         : {},
   }
 );
+
+const user = require("./models/user.model")(sequelize);
+const item = require("./models/item.model")(sequelize);
+
 sequelize.authenticate();
-console.info(
-  "INFO: Connection to the database has been established successfully."
-);
+console.info("Sequealize works");
+module.exports = { sequelize, models: { user, item } };
