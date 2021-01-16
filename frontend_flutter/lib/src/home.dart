@@ -23,8 +23,12 @@ class _HomeState extends State<Home> {
             Container(
               padding: EdgeInsets.all(12),
               child: ElevatedButton(
-                child: Text("Start Session"),
-                onPressed: () {},
+                child: Text(
+                  "Start Session",
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/startSession');
+                },
               ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 4,
