@@ -1,15 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+//import 'package:socket_io/socket_io.dart';
+// import 'package:socket_io_client/socket_io_client.dart' as IO;
+// import 'package:flutter_simple_dependency_injection/injector.dart';
 
 class HostSession extends StatefulWidget {
   // final String title;
-  // HostSession({Key key, this.title}) : super(key: key);
+  // HostSession({Key key}) : super(key: key);
 
   @override
   _HostSession createState() => _HostSession();
 }
 
 class _HostSession extends State<HostSession> {
+  int participants = 0;
+  String val = "this is a test";
+
+  // final SocketService socketService = injector.get<SocketService>();
+  // socketService.createSocketConnection();
+
+  // SocketIOManager manager = SocketIOManager();
+  // SocketIO socket;
+
+  // testFunction(var data) {
+  //   // socket.emit("test", "this is a test");
+  //   print(data);
+  // }
+
+  // IO.Socket socket;
+
+  // @override
+  // void initState() {
+  //   socket = IO.io("http://your url/", <String, dynamic>{
+  //     'transports': ['websocket', 'polling'],
+  //   });
+  //   socket.connect();
+  //   socket.onConnect((_) {
+  //     print('connect');
+  //     socket.emit('msg', 'test');
+  //   });
+  //   socket.on('event', (data) => print(data));
+  //   socket.on('disconnect', (_) => print('disconnect'));
+  //   socket.on('fromServer', (_) => print(_));
+  //   socket.on('test', testFunction);
+  // }
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context).settings.arguments;
@@ -41,7 +76,7 @@ class _HostSession extends State<HostSession> {
                     args,
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
                   ),
-                  QrImage(data: "1234", size: 200),
+                  QrImage(data: "1234", size: 150),
                   Text(
                     "Join Code:",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700),
@@ -51,7 +86,7 @@ class _HostSession extends State<HostSession> {
                     style: TextStyle(fontSize: 60, fontWeight: FontWeight.w900),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Container(
                     child: ElevatedButton(
@@ -66,10 +101,13 @@ class _HostSession extends State<HostSession> {
                         shape: StadiumBorder(),
                         primary: Colors.green,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        // print("test");
+                        // socket.emit('test', 'hi');
+                      },
                     ),
                     width: MediaQuery.of(context).size.width / 2,
-                    height: 60,
+                    height: 50,
                   ),
                   SizedBox(
                     height: 10,
@@ -92,7 +130,7 @@ class _HostSession extends State<HostSession> {
                       },
                     ),
                     width: MediaQuery.of(context).size.width / 2,
-                    height: 60,
+                    height: 50,
                   ),
                   SizedBox(
                     height: 60,

@@ -6,8 +6,15 @@ import 'package:frontend_flutter/src/joinSession.dart';
 import 'package:frontend_flutter/src/swipe.dart';
 import 'package:frontend_flutter/src/hostSession.dart';
 import 'package:frontend_flutter/src/clientSession.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/status.dart' as status;
 
-void main() {
+void main() async {
+  var channel = IOWebSocketChannel.connect("ws://localhost:8000");
+  channel.stream.listen((message) {
+    channel.sink.add("received!");
+    channel.sink.close(status.goingAway);
+  });
   runApp(MyApp());
 }
 
@@ -15,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,

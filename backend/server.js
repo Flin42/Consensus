@@ -60,6 +60,12 @@ function createRoom(user_id) {
   return room_code;
 }
 
+app.io.route('test', function(req) {
+  console.log("test!!" + req.data)
+/*   req.io.emit("test2", req.data.string. )
+ */});
+
+
 // emit events to session:create, session:join, session:start
 app.io.route("session", {
   create: function (req) {
