@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  linegit p_awesome_flutter: ^1.0
+  line_awesome_flutter: ^1.0.1
   flutter_screenutil: ^4.0.2+3
 
   # The following adds the Cupertino Icons font to your application.
