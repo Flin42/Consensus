@@ -4,12 +4,7 @@ const app = express();
 app.http().io();
 const Sequelize = require("sequelize-cockroachdb");
 const fs = require("fs");
-const {
-  models
-} = require("./sequelize/sequelize");
-const {
-  Socket
-} = require("dgram");
+const { Socket } = require("dgram");
 
 require("dotenv").config();
 const port = process.env.PORT || 8000;
@@ -17,18 +12,20 @@ const port = process.env.PORT || 8000;
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
-  process.env.DB_PASSWORD, {
+  process.env.DB_PASSWORD,
+  {
     dialect: "postgres",
     host: process.env.DB_URL,
     port: process.env.DB_PORT,
     logging: false,
-    dialectOptions: process.env.DB_SSL_MODE === "ENABLED" ?
-      {
-        ssl: {
-          ca: fs.readFileSync(process.env.DB_CERT_LOCATION).toString(),
-        },
-      } :
-      {},
+    dialectOptions:
+      process.env.DB_SSL_MODE === "ENABLED"
+        ? {
+            ssl: {
+              ca: fs.readFileSync(process.env.DB_CERT_LOCATION).toString(),
+            },
+          }
+        : {},
   }
 );
 
@@ -45,6 +42,8 @@ app.use("/sessions", require("./routes/sessions"));
 app.use("/user", require("./routes/user"));
 app.use("/test", require("./routes/test"));
 
+const { models } = require("./sequelize/sequelize");
+
 /* Create Room:
   - Check if roomID exists in sessions in db
   - Create roomID and join user into room, and send roomID to db
@@ -53,10 +52,10 @@ function createRoom(user_id) {
   const room_code = generateCode(6);
   sequelize.query(
     "INSERT INTO sessions(sessionID, ownerID, members) VALUES('" +
-    room_code +
-    "'," +
-    user_id +
-    ", 1)"
+      room_code +
+      "'," +
+      user_id +
+      ", 1)"
   );
   return room_code;
 }
