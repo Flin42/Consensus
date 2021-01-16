@@ -20,6 +20,16 @@ class SwipeScreenState extends State<SwipeScreen>
     CardController controller;
 
     return new Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.blue[300],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Navigator.pop(context);
+          },
+        ),
+      ),
       body: new Center(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.6,
