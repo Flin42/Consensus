@@ -9,7 +9,9 @@ class ProfileScreen extends StatelessWidget {
           backgroundColor: Color(0xff555555),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
         body: Center(
@@ -61,7 +63,15 @@ class ProfileScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                 ),
-              )
+              ),
+              Container(
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    child: Text("Swipe"),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/Swipe');
+                    },
+                  ))
             ],
           ),
         ));

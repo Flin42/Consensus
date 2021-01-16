@@ -76,7 +76,9 @@ class _HomeState extends State<Home> {
                     fontSize: 36,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/ProfileScreen');
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
