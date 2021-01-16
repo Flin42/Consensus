@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:barcode_scan/barcode_scan.dart';
 
 class JoinSession extends StatefulWidget {
   JoinSession({Key key, this.title}) : super(key: key);
@@ -12,6 +13,12 @@ class JoinSession extends StatefulWidget {
 class _JoinSessionState extends State<JoinSession> {
   final _formKey = GlobalKey<FormState>();
   int code;
+  var result;
+
+  void scan() async {
+    result = await BarcodeScanner.scan();
+    print(result.rawContent);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,24 @@ class _JoinSessionState extends State<JoinSession> {
                       )),
                   width: MediaQuery.of(context).size.width * 4 / 7,
                   height: 70,
-                )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  child: ElevatedButton(
+                      child: Text("Scan QR Code",
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.w700)),
+                      onPressed: () {
+                        scan();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: StadiumBorder(),
+                      )),
+                  width: MediaQuery.of(context).size.width * 4 / 7,
+                  height: 70,
+                ),
               ],
             ),
           )),

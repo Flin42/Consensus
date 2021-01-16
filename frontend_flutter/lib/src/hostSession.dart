@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class HostSession extends StatefulWidget {
   // final String title;
@@ -40,9 +41,7 @@ class _HostSession extends State<HostSession> {
                     args,
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
+                  QrImage(data: "1234", size: 200),
                   Text(
                     "Join Code:",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700),
