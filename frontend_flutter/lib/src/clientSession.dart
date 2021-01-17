@@ -26,7 +26,7 @@ class _ClientSession extends State<ClientSession> {
               SizedBox(width: 10),
               Icon(Icons.person, size: 40),
               Text(
-                "0",
+                "1",
                 style: TextStyle(fontSize: 40),
               )
             ],

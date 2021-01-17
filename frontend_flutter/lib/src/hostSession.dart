@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-//import 'package:socket_io/socket_io.dart';
+import 'package:websocket_manager/websocket_manager.dart';
+// import 'package:web_socket_channel/html.dart';
+// import 'package:web_socket_channel/io.dart';
+// import 'package:web_socket_channel/web_socket_channel.dart';
+// import 'package:socket_io/socket_io.dart';
 // import 'package:socket_io_client/socket_io_client.dart' as IO;
 // import 'package:flutter_simple_dependency_injection/injector.dart';
 
 class HostSession extends StatefulWidget {
   // final String title;
-  // HostSession({Key key}) : super(key: key);
+  // final WebSocketChannel channel;
+  // HostSession({Key key, @required this.channel}) : super(key: key);
 
   @override
   _HostSession createState() => _HostSession();
@@ -14,39 +19,13 @@ class HostSession extends StatefulWidget {
 
 class _HostSession extends State<HostSession> {
   int participants = 0;
-  String val = "this is a test";
 
-  // final SocketService socketService = injector.get<SocketService>();
-  // socketService.createSocketConnection();
-
-  // SocketIOManager manager = SocketIOManager();
-  // SocketIO socket;
-
-  // testFunction(var data) {
-  //   // socket.emit("test", "this is a test");
-  //   print(data);
-  // }
-
-  // IO.Socket socket;
-
-  // @override
-  // void initState() {
-  //   socket = IO.io("http://your url/", <String, dynamic>{
-  //     'transports': ['websocket', 'polling'],
-  //   });
-  //   socket.connect();
-  //   socket.onConnect((_) {
-  //     print('connect');
-  //     socket.emit('msg', 'test');
-  //   });
-  //   socket.on('event', (data) => print(data));
-  //   socket.on('disconnect', (_) => print('disconnect'));
-  //   socket.on('fromServer', (_) => print(_));
-  //   socket.on('test', testFunction);
-  // }
+  WebsocketManager socket;
 
   @override
   Widget build(BuildContext context) {
+    // socket = WebsocketManager("http://localhost:8000");
+    // socket.connect();
     final args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +41,7 @@ class _HostSession extends State<HostSession> {
               SizedBox(width: 10),
               Icon(Icons.person, size: 40),
               Text(
-                "0",
+                "1",
                 style: TextStyle(fontSize: 40),
               )
             ],
@@ -76,6 +55,16 @@ class _HostSession extends State<HostSession> {
                     args,
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
                   ),
+                  // StreamBuilder(
+                  //   stream: widget.channel.stream,
+                  //   builder: (context, snapshot) {
+                  //     return Text(
+                  //       snapshot.hasData ? snapshot.data : "Waiting",
+                  //       style: TextStyle(
+                  //           fontSize: 50, fontWeight: FontWeight.w900),
+                  //     );
+                  //   },
+                  // ),
                   QrImage(data: "1234", size: 150),
                   Text(
                     "Join Code:",
@@ -103,7 +92,9 @@ class _HostSession extends State<HostSession> {
                       ),
                       onPressed: () {
                         // print("test");
-                        // socket.emit('test', 'hi');
+                        // widget.channel.sink.add('test');
+                        // socket.send("test");
+                        Navigator.pushNamed(context, '/Swipe');
                       },
                     ),
                     width: MediaQuery.of(context).size.width / 2,
@@ -127,6 +118,9 @@ class _HostSession extends State<HostSession> {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
+                        // socket.onMessage((dynamic message) {
+                        //   print(message);
+                        // });
                       },
                     ),
                     width: MediaQuery.of(context).size.width / 2,

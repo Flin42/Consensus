@@ -6,15 +6,17 @@ import 'package:frontend_flutter/src/joinSession.dart';
 import 'package:frontend_flutter/src/swipe.dart';
 import 'package:frontend_flutter/src/hostSession.dart';
 import 'package:frontend_flutter/src/clientSession.dart';
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/status.dart' as status;
+// import 'package:websocket_manager/websocket_manager.dart';
+// import 'package:socket_io/socket_io.dart';
+// import 'package:socket_io_client/socket_io_client.dart' as IO;
+// import 'package:web_socket_channel/html.dart';
+// import 'package:web_socket_channel/io.dart';
+// import 'package:web_socket_channel/web_socket_channel.dart';
+// import 'package:web_socket_channel/status.dart' as status;
 
-void main() async {
-  var channel = IOWebSocketChannel.connect("ws://localhost:8000");
-  channel.stream.listen((message) {
-    channel.sink.add("received!");
-    channel.sink.close(status.goingAway);
-  });
+// var channel;
+void main() {
+  // channel = await IOWebSocketChannel.connect('ws://localhost:8000');
   runApp(MyApp());
 }
 
@@ -35,7 +37,9 @@ class MyApp extends StatelessWidget {
           '/ProfileScreen': (context) => ProfileScreen(),
           '/joinSession': (context) => JoinSession(),
           '/Swipe': (context) => SwipeScreen(),
-          '/hostSession': (context) => HostSession(),
+          '/hostSession': (context) => HostSession(
+              // channel: IOWebSocketChannel.connect("ws://localhost:8000"),
+              ),
           '/clientSession': (context) => ClientSession(),
         });
   }

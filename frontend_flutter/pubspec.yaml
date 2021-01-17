@@ -29,8 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.1
   qr_flutter: ^3.1.0
-  web_socket_channel: ^1.1.0
+  # web_socket_channel: ^1.1.0
   barcode_scan: ^3.0.1
+  # socket_io_client: ^0.9.12
+  websocket_manager: ^0.2.2
 
 dev_dependencies:
   flutter_test:

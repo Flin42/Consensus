@@ -63,12 +63,12 @@ class _JoinSessionState extends State<JoinSession> {
                               fontSize: 30, fontWeight: FontWeight.w700)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          Navigator.pushNamed(context, '/clientSession',
-                              arguments: code);
+                          Navigator.pushNamed(context, '/Swipe');
                         }
                       },
                       style: ElevatedButton.styleFrom(
                         shape: StadiumBorder(),
+                        primary: Colors.orange,
                       )),
                   width: MediaQuery.of(context).size.width * 4 / 7,
                   height: 70,
@@ -86,6 +86,7 @@ class _JoinSessionState extends State<JoinSession> {
                       },
                       style: ElevatedButton.styleFrom(
                         shape: StadiumBorder(),
+                        primary: Colors.purple,
                       )),
                   width: MediaQuery.of(context).size.width * 4 / 7,
                   height: 70,

@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 
@@ -6,8 +8,28 @@ class SwipeScreen extends StatefulWidget {
   SwipeScreenState createState() => SwipeScreenState();
 }
 
+class Movie {
+  String name;
+  String description;
+
+  Movie(this.name, {this.description});
+}
+
 class SwipeScreenState extends State<SwipeScreen>
     with TickerProviderStateMixin {
+  List<Movie> movies = [
+    Movie("Star Wars"),
+    Movie("Shrek"),
+    Movie("The Godfather"),
+    Movie("Interstellar"),
+    Movie("Parasite"),
+    Movie("Spirited Away"),
+    Movie("The Matrix"),
+    Movie("Inception"),
+    Movie("Forrest Gump"),
+    Movie("The Dark Knight"),
+  ];
+
   List<String> welcomeImages = [
     "../../assets/images/SpongeBob.png",
     "assets/images/SpongeBob.png",
@@ -22,11 +44,12 @@ class SwipeScreenState extends State<SwipeScreen>
     return new Scaffold(
       appBar: AppBar(
         elevation: 0.0,
+        title: Text("Join Code: 1234"),
         backgroundColor: Colors.blue[300],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
         ),
       ),
@@ -37,7 +60,7 @@ class SwipeScreenState extends State<SwipeScreen>
             swipeUp: true,
             swipeDown: true,
             orientation: AmassOrientation.BOTTOM,
-            totalNum: welcomeImages.length,
+            totalNum: movies.length,
             stackNum: 3,
             swipeEdge: 4.0,
             maxWidth: MediaQuery.of(context).size.width * 0.9,
@@ -45,7 +68,26 @@ class SwipeScreenState extends State<SwipeScreen>
             minWidth: MediaQuery.of(context).size.width * 0.8,
             minHeight: MediaQuery.of(context).size.width * 0.8,
             cardBuilder: (context, index) => Card(
-              child: Image.asset('${welcomeImages[index]}'),
+              // child: Image.asset('${welcomeImages[index]}'),
+              child: Container(
+                child: Center(
+                  child: Text(movies[index].name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 36,
+                        fontWeight: FontWeight.w900,
+                      )),
+                ),
+                color: index % 5 == 0
+                    ? Colors.red
+                    : index % 5 == 1
+                        ? Colors.blue
+                        : index % 5 == 2
+                            ? Colors.purple
+                            : index % 5 == 3
+                                ? Colors.orange
+                                : Colors.green,
+              ),
             ),
             cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
